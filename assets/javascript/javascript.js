@@ -3,7 +3,8 @@
 //Inital array of sports players
 var sportsPlayer = ["Michael Jordan", "Allen Iverson", "Odell Beckham", "Tracy McGrady", "P.K. Subban", "Jackie Robinson", "Lebron James"]
 
-
+var stillStop;
+var animatedPlay;
 
 //Generate buttons for players in the array
     for (var i = 0; i < sportsPlayer.length; i++) {
@@ -35,7 +36,7 @@ $(document).on("click", "#add-player", function () {
         for (var i = 0; i < sportsPlayer.length; i++) {
 
         createSearchBtn.text(sportsPlayer[i]);
-        createSearchBtn.attr("class", "players").attr("data-name", sportsPlayer[i]);
+        createSearchBtn.attr({"class": "players", "data-name": sportsPlayer[i]});
         $(".buttons-view").append(createSearchBtn);
         }
 
@@ -68,31 +69,50 @@ $(document).on("click", ".players", function () {
           var results = response.data;
 
           // Looping through each result item
-          for (var i = 0; i < results.length; i++) {
+          for (var j = 0; j < results.length; j++) {
 
             // Creating and storing a div tag
             var playasDiv = $("<div>");
 
             // Creating a paragraph tag with the result item's rating
-            var p = $("<p>").text("Rating: " + results[i].rating);
+            var pTag = $("<p>").text("Rating: " + results[j].rating);
+            
+            //calling still and animated variables to assign them a image type
+            stillStop = results[j].images.original_still.url;
+            animatedPlay = results[j].images.original.url;
+            
 
-            // Creating and storing an image tag
-            var playerImage = $("<img>");
-            // Setting the src attribute of the image to a property pulled off the result item
-            playerImage.attr("src", results[i].images.fixed_height.url);
 
-            // Appending the paragraph and image tag to the animalDiv
-            playasDiv.append(p);
+           // Setting the data name and src attribute of the image to a property pulled off the result item
+            var playerImage = $("<img>").attr({"data-status": "stopped", "src": stillStop,
+             "data-animate": animatedPlay, 
+             "data-stop": stillStop});;
+           
+
+            // Appending the paragraph and image tag to the playasDiv
+            playasDiv.append(pTag);
             playasDiv.append(playerImage);
 
-            // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-            $("#gif-dumps").prepend(playasDiv);
+            // Prependng the playasDiv to the HTML page in the "#gifs-dumps" div
+            $("#gif-dumps").prepend(playasDiv);  
           }
+            
         })
 
 })
 
+//On click event for images so that they will animate
+$(document).on("click", "img", function(){
+    var state = $(this).attr("data-status");
+    if (state === "stopped") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-status", "animated");
+    } else {
+      $(this).attr("src", $(this).attr("data-stop"));
+      $(this).attr("data-status", "stopped");
+    }
 
+});
 
 
     

@@ -20,9 +20,11 @@ var sportsPlayer = ["Michael Jordan", "Allen Iverson", "Odell Beckham", "Tracy M
     $(".buttons-view").append(newButton);
     }
 
-//On click events for buttons to display pictures
+//On click events for buttons to add new buttons
 $(document).on("click", "#add-player", function () {
-
+    
+    
+    
     
 
     //storing data name
@@ -30,15 +32,22 @@ $(document).on("click", "#add-player", function () {
     //New button creation
         var createSearchBtn = $("<button>");
     
+        for (var i = 0; i < sportsPlayer.length; i++) {
+
         createSearchBtn.text(sportsPlayer[i]);
+
+    //Gives new button the class of players and attr users input to data-name
         createSearchBtn.attr("class", "players").attr("data-name", sportsPlayer[i]);
         $(".buttons-view").append(createSearchBtn);
-    
+        }
+
+    //clears text box when submit is clicked
+        $("#player-input").val(" ");
     });
 
 //function that Drops gifs onto page
 $(document).on("click", ".players", function () {
-    
+    $("#gif-dumps").empty();
     
 // Grabbing and storing the data-animal property value from the button
     var playaNames = $(this).attr("data-name");

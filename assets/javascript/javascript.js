@@ -35,14 +35,11 @@ $(document).on("click", "#add-player", function () {
         for (var i = 0; i < sportsPlayer.length; i++) {
 
         createSearchBtn.text(sportsPlayer[i]);
-
-    //Gives new button the class of players and attr users input to data-name
         createSearchBtn.attr("class", "players").attr("data-name", sportsPlayer[i]);
         $(".buttons-view").append(createSearchBtn);
         }
 
-    //clears text box when submit is clicked
-        $("#player-input").val(" ");
+        $("#player-input").val("");
     });
 
 //function that Drops gifs onto page

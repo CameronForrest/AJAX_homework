@@ -1,0 +1,35 @@
+body {
+    background-image: url("../images/sportsBall.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow:3px 3px 10px black;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.playerBox {
+    display: flex;
+    justify-content: center;
+}
+
+.gifPhotos {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow:3px 3px 10px black;
+    font-size: 24px;
+}
+

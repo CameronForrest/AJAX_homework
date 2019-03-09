@@ -5,7 +5,7 @@ Trivia Game using JQuery
 <h1>Technology</h1>
 <ul>
   <li>HTML5,CSS,Javascript,JQuery, AJAX, gifphy API</li>
-  <li>Live Demo https://cameronforrest.github.io/TriviaGame/ </li>
+  <li>Live Demo https://cameronforrest.github.io/AJAX_homework/ </li>
 </ul>
 <h1>About</h1>
 <ul>
